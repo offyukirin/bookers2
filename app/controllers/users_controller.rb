@@ -17,8 +17,8 @@ class UsersController < ApplicationController
 	    @book = Book.new
         @user = User.find(params[:id])
         @books = @user.books
-        @books = Book.where(user_id: current_user&.id)
-        
+
+
     end
 
     def new
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     end
     end
 
-   
+
 
 
 
@@ -48,12 +48,10 @@ class UsersController < ApplicationController
       @users =User.all
       @books = Book.all
       @book = Book.new
-      
-      
       @user = current_user
-     
-      
-      
+
+
+
     end
 
 
@@ -80,7 +78,7 @@ class UsersController < ApplicationController
 
 
    private
-   
+
 
     def book_params
         params.require(:book).permit(:title, :body)

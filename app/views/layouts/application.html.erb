@@ -37,9 +37,10 @@
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
             <li>
+              <p>
               <i class= "fas fa-home"></i>
               <%= link_to "Home", user_path(current_user),  class:"nav-link text-light"  %>
-            
+              </p>
             
             </li>
             
@@ -65,24 +66,28 @@
 
           <% else %>
             <li>
-              <%= link_to root_path ,class:"nav-link text-light" do %>
-           <i class= "fas fa-home">Home</i>
-            <% end %>
+              <i class= "fas fa-home"></i>
+              <%= link_to"Home",root_path ,class:"nav-link text-light"  %>
+           
+            
             </li>
             <li>
-              <%= link_to about_path, class:"nav-link text-light" do %>
-                <i class= "fas fa-link">About</i>
-                <% end %>
+              <i class= "fas fa-link"></i>
+              <%= link_to "About",about_path, class:"nav-link text-light"  %>
+                
+                
             </li>
             <li>
-              <%= link_to new_user_registration_path, class:"nav-link text-light" do %>
-                <i class="fas fa-user-plus">Sign up</i>
-                <% end %>
+              <i class="fas fa-user-plus"></i>
+              <%= link_to "Sign up",new_user_registration_path, class:"nav-link text-light"  %>
+                
+                
               </li>
             <li>
-              <%= link_to new_user_session_path, class:"nav-link text-light" do %>
-                <i class="fas fa-sign-in-alt">Log in</i>
-                <% end %>
+              <i class="fas fa-sign-in-alt"></i>
+              <%= link_to "Log in",new_user_session_path, class:"nav-link text-light"  %>
+                
+                
             </li>
           <% end %>
         </<ul>
