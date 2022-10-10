@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  
+ 
 <title>Bookers2</title>
 <%= csrf_meta_tags %>
 <%= csp_meta_tag %>
@@ -13,7 +15,6 @@
 
 
 
-t
 
 
 
@@ -21,25 +22,68 @@ t
 
 
 
-<body class="d-flex flex-column vh-100">
+
+<body>
   <header class="navbar navbar-expand-lg navbar-dark text-white bg-dark">
     <div class="container">
       <nav class='nav navbar-nav navbar-left' >
-        <div class="b">Bookers2</div>
+        <div class="box">
+          <%= link_to root_path, class:"nav-link text-light" do %>
+          <span class="glyphicon glyphicon-user" aria-hidden="true">Bookers2</span>
+          <% end %>
+        </div>
       </nav>
       <nav>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
-            <li><%= link_to "Home",root_path ,class:"glyphicon glyphicon-home" %></a></li>
-            <li><%= link_to "Users", user_path(current_user.id),class:"glyphicon glyphicon-user" %></a></li>
-            <li><%= link_to "Books", "/books",class:"glyphicon glyphicon-book" %></a></li>
-            <li><%= link_to "log out", destroy_user_session_path,class:" glyphicon  glyphicon-log-out",method: :delete %></li>
+            <li>
+              <i class= "fas fa-home"></i>
+              <%= link_to "Home", user_path(current_user),  class:"nav-link text-light"  %>
+            
+            
+            </li>
+            
+            <li>
+              <i class= "fas fa-users"></i>
+              <%= link_to "Users", users_path, class:"nav-link text-light"  %>
+            
+            
+            </li>
+            
+            <li>
+              <i class= "fas fa-book-open"></i>
+              <%= link_to "Books", books_path, class:"nav-link text-light"  %>
+            
+            
+            </li>
+            <li>
+              <i class= "fas fa-sign-out-alt"></i>
+              <%= link_to "Log out",destroy_user_session_path, method: :delete,  class:"nav-link text-light"  %>
+              
+              
+            </li>
 
           <% else %>
-            <li><%= link_to"Home",root_path,  class:"glyphicon glyphicon-home" %></li>
-            <li><%= link_to"About",about_path,class:"glyphicon glyphicon-link" %></li>
-            <li><%= link_to"Sign up", "/users/sign_up",class:"glyphicon glyphicon-edit sign_up" %></li>
-            <li><%= link_to"login", "/users/sign_in",  class:"glyphicon glyphicon-log-in" %></li>
+            <li>
+              <%= link_to root_path ,class:"nav-link text-light" do %>
+           <i class= "fas fa-home">Home</i>
+            <% end %>
+            </li>
+            <li>
+              <%= link_to about_path, class:"nav-link text-light" do %>
+                <i class= "fas fa-link">About</i>
+                <% end %>
+            </li>
+            <li>
+              <%= link_to new_user_registration_path, class:"nav-link text-light" do %>
+                <i class="fas fa-user-plus">Sign up</i>
+                <% end %>
+              </li>
+            <li>
+              <%= link_to new_user_session_path, class:"nav-link text-light" do %>
+                <i class="fas fa-sign-in-alt">Log in</i>
+                <% end %>
+            </li>
           <% end %>
         </<ul>
       </nav>
@@ -61,10 +105,9 @@ t
 
   <footer>
     <div class='container'>
-      <div class="row no-gutters">
-        <div class="col-md-4">
-          <p>CopyRight Infratop.inc</p>
-        </div>
+      <div class='row'>
+        <div class='offset-md-6'></div>
+       <div class='col-md-6'><p>CopyRight Infratop.inc</p></div> 
       </div>
     </div>
   </footer>

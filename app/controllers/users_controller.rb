@@ -12,11 +12,13 @@ class UsersController < ApplicationController
 
 
 
-	  def show
-		    @book = Book.new
+
+    def show
+	    @book = Book.new
         @user = User.find(params[:id])
         @books = @user.books
-
+        @books = Book.where(user_id: current_user&.id)
+        
     end
 
     def new
@@ -29,7 +31,12 @@ class UsersController < ApplicationController
     end
 
     def edit
-        @user = User.find(params[:id])
+       @user = User.find(params[:id])
+    if @user == current_user
+        render "edit"
+    else
+      redirect_to user_path(current_user)
+    end
     end
 
    
@@ -39,9 +46,14 @@ class UsersController < ApplicationController
 
     def index
       @users =User.all
-    	@books = Book.all
-    	@book = Book.new
+      @books = Book.all
+      @book = Book.new
+      
+      
       @user = current_user
+     
+      
+      
     end
 
 
@@ -55,7 +67,7 @@ class UsersController < ApplicationController
 
         redirect_to "/users/#{current_user.id}"
       else
-        flash[:notice] = " errors prohibited this obj from being saved:"
+        flash[:notice] = " errors prohibited this obj from being save. name is too short (minimum is 2 characters)"
         render :edit
 
       end
